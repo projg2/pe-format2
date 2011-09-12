@@ -2,8 +2,8 @@ bin_PROGRAMS = pe-exec
 sbin_SCRIPTS = pe-format2-conf.sh
 
 if ENABLE_OPENRC
-noinst_SCRIPTS = pe-format.init
-noinst_DATA = pe-format.conf
+noinst_SCRIPTS = openrc/pe-format.init
+noinst_DATA = openrc/pe-format.conf
 endif
 
 if ENABLE_BINFMT
@@ -12,7 +12,8 @@ binfmt_DATA = binfmt.d/pe-format2.conf
 endif
 
 DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS) $(binfmt_DATA)
-EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in \
+EXTRA_DIST = pe-format2-conf.sh.in \
+	openrc/pe-format.init.in openrc/pe-format.conf.in \
 	binfmt.d/pe-format2.conf.in
 
 pkgstatefile = $(localstatedir)/pe-format2
@@ -34,8 +35,8 @@ $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA) $(binfmt_DATA): config.status
 	chmod a-w $@.tmp
 	mv $@.tmp $@
 
-pe-format.init: pe-format.init.in
-pe-format.conf: pe-format.conf.in
+openrc/pe-format.init: openrc/pe-format.init.in
+openrc/pe-format.conf: openrc/pe-format.conf.in
 pe-format2-conf.sh: pe-format2-conf.sh.in
 binfmt.d/pe-format2.conf: binfmt.d/pe-format2.conf.in
 
