@@ -8,11 +8,12 @@ endif
 
 if ENABLE_BINFMT
 binfmtdir = $(prefix)/lib/binfmt.d
-binfmt_DATA = pe-format2.conf
+binfmt_DATA = binfmt.d/pe-format2.conf
 endif
 
 DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS) $(binfmt_DATA)
-EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in pe-format2.conf.in
+EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in \
+	binfmt.d/pe-format2.conf.in
 
 pkgstatefile = $(localstatedir)/pe-format2
 
@@ -33,7 +34,7 @@ $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA) $(binfmt_DATA): config.status
 pe-format.init: pe-format.init.in
 pe-format.conf: pe-format.conf.in
 pe-format2-conf.sh: pe-format2-conf.sh.in
-pe-format2.conf: pe-format2.conf.in
+binfmt.d/pe-format2.conf: binfmt.d/pe-format2.conf.in
 
 install-exec-local:
 	test -z "$(localstatedir)" || $(MKDIR_P) "$(DESTDIR)$(localstatedir)"
