@@ -18,6 +18,7 @@ $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA): config.status
 	rm -f $@ $@.tmp
 	$(SED) \
 		-e "s|@sysconfdir[@]|$(sysconfdir)|" \
+		-e "s|@bindir[@]|$(bindir)|" \
 		-e "s|@sbindir[@]|$(sbindir)|" \
 		-e "s|@pkgstatefile[@]|$(pkgstatefile)|" \
 		${srcdir}/$@.in > $@.tmp

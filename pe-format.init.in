@@ -48,7 +48,7 @@ start() {
 		fi
 	fi
 
-	echo ':PE:M::MZ::/usr/bin/pe-exec:' > /proc/sys/fs/binfmt_misc/register
+	echo ':PE:M::MZ::@bindir@/pe-exec:' > /proc/sys/fs/binfmt_misc/register
 	eend ${?}
 }
 
