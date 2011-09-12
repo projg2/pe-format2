@@ -6,15 +6,20 @@ noinst_SCRIPTS = pe-format.init
 noinst_DATA = pe-format.conf
 endif
 
-DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS)
-EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in
+if ENABLE_BINFMT
+binfmtdir = $(prefix)/lib/binfmt.d
+binfmt_DATA = pe-format2.conf
+endif
+
+DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS) $(binfmt_DATA)
+EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in pe-format2.conf.in
 
 pkgstatefile = $(localstatedir)/pe-format2
 
 pe_exec_SOURCES = pe-exec.c pe-recog.c pe-recog.h pe-config.c pe-config.h cil-coff.h
 pe_exec_CPPFLAGS = -DSTATEFILE=\"$(pkgstatefile)\"
 
-$(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA): config.status
+$(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA) $(binfmt_DATA): config.status
 	rm -f $@ $@.tmp
 	$(SED) \
 		-e "s|@sysconfdir[@]|$(sysconfdir)|" \
@@ -28,6 +33,7 @@ $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA): config.status
 pe-format.init: pe-format.init.in
 pe-format.conf: pe-format.conf.in
 pe-format2-conf.sh: pe-format2-conf.sh.in
+pe-format2.conf: pe-format2.conf.in
 
 install-exec-local:
 	test -z "$(localstatedir)" || $(MKDIR_P) "$(DESTDIR)$(localstatedir)"
