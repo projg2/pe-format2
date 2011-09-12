@@ -16,6 +16,10 @@ AS_IF([test "x$enable_debug" = "xyes"], [
 	AC_DEFINE([ENABLE_DEBUG], [1], [Enable debugging code])
 ])
 
+AC_ARG_ENABLE([openrc],
+	AS_HELP_STRING([--enable-openrc], [Build OpenRC files]))
+AM_CONDITIONAL([ENABLE_OPENRC], [test x"$enable_openrc" = x"yes"])
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

@@ -1,7 +1,10 @@
 bin_PROGRAMS = pe-exec
 sbin_SCRIPTS = pe-format2-conf.sh
+
+if ENABLE_OPENRC
 noinst_SCRIPTS = pe-format.init
 noinst_DATA = pe-format.conf
+endif
 
 DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS)
 EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in
