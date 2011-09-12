@@ -8,7 +8,6 @@ if [ -n "${RC_SVCNAME}" ]; then
 else
 	ewarn=echo
 	eerror=echo
-	exec >&2
 fi
 
 firstworking() {
@@ -20,7 +19,7 @@ firstworking() {
 		shift
 	done
 
-	${ewarn} "\${${1}} is not set and none of the default applications were found!"
+	${ewarn} "\${${1}} is not set and none of the default applications were found!" >&2
 }
 
 : ${UNKNOWN:=$(firstworking wine mono ilrun dosbox dosemu UNKNOWN)}
@@ -30,7 +29,7 @@ firstworking() {
 : ${WIN64:=$(firstworking wine64 WIN64)}
 
 if [ -z "${UNKNOWN}" -a -z "${MSDOS}" -a -z "${WIN32}" -a -z "${CLR}" -a -z "${WIN64}" ]; then
-	${eerror} 'None of the expected interpreters were set, aborting.'
+	${eerror} 'None of the expected interpreters were set, aborting.' >&2
 	exit 1
 else
 	printf '%s\0' "${UNKNOWN}" "${MSDOS}" "${WIN32}" "${CLR}" "${WIN64}" > @pkgstatefile@
