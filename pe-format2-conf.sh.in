@@ -20,7 +20,7 @@ firstworking() {
 		shift
 	done
 
-	ewarn "\${${1}} is not set and none of the default applications were found!"
+	${ewarn} "\${${1}} is not set and none of the default applications were found!"
 }
 
 : ${UNKNOWN:=$(firstworking wine mono ilrun dosbox dosemu UNKNOWN)}
