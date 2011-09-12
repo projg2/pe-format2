@@ -1,0 +1,2 @@
+# binfmt_misc for pe-format2
+:PE:M::MZ::@bindir@/pe-exec:
