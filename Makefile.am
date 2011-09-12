@@ -20,3 +20,7 @@ $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA): config.status
 		${srcdir}/$@.in > $@.tmp
 	chmod a-w $@.tmp
 	mv $@.tmp $@
+
+pe-format.init: pe-format.init.in
+pe-format.conf: pe-format.conf.in
+pe-format2-conf.sh: pe-format2-conf.sh.in
