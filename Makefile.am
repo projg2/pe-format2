@@ -6,7 +6,7 @@ noinst_DATA = pe-format.conf
 DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS)
 EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in
 
-pkgstatefile = @localstatedir@/pe-format2
+pkgstatefile = $(localstatedir)/pe-format2
 
 pe_exec_SOURCES = pe-exec.c pe-recog.c pe-recog.h pe-config.c pe-config.h cil-coff.h
 pe_exec_CPPFLAGS = -DSTATEFILE=\"$(pkgstatefile)\"
@@ -24,3 +24,6 @@ $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA): config.status
 pe-format.init: pe-format.init.in
 pe-format.conf: pe-format.conf.in
 pe-format2-conf.sh: pe-format2-conf.sh.in
+
+install-exec-local:
+	test -z "$(localstatedir)" || $(MKDIR_P) "$(DESTDIR)$(localstatedir)"
