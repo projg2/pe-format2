@@ -17,7 +17,10 @@ EXTRA_DIST = pe-format2-conf.sh.in pe-format.init.in pe-format.conf.in \
 
 pkgstatefile = $(localstatedir)/pe-format2
 
-pe_exec_SOURCES = pe-exec.c pe-recog.c pe-recog.h pe-config.c pe-config.h cil-coff.h
+pe_exec_SOURCES = \
+	src/pe-exec.c src/cil-coff.h \
+	src/pe-recog.c src/pe-recog.h \
+	src/pe-config.c src/pe-config.h
 pe_exec_CPPFLAGS = -DSTATEFILE=\"$(pkgstatefile)\"
 
 $(sbin_SCRIPTS) $(noinst_SCRIPTS) $(noinst_DATA) $(binfmt_DATA): config.status
