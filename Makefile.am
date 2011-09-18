@@ -16,7 +16,7 @@ pe_exec_SOURCES = \
 	src/pe-config.c src/pe-config.h
 pe_exec_CPPFLAGS = -DSTATEFILE=\"$(pkgstatefile)\"
 
-$(sbin_SCRIPTS) $(binfmt_DATA) $(sysconfdir_DATA): config.status
+$(sbin_SCRIPTS) $(binfmt_DATA) $(sysconf_DATA): config.status
 	$(MKDIR_P) binfmt.d
 	rm -f $@ $@.tmp
 	$(SED) \
