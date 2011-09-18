@@ -1,9 +1,9 @@
 bin_PROGRAMS = pe-exec
-sbin_SCRIPTS = pe-format2-conf.sh
+sbin_SCRIPTS = pe-format2-setup
 binfmt_DATA = binfmt.d/pe-format2.conf
 
 DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS) $(binfmt_DATA)
-EXTRA_DIST = pe-format2-conf.sh.in \
+EXTRA_DIST = pe-format2-setup.in \
 	binfmt.d/pe-format2.conf.in
 
 pkgstatefile = $(localstatedir)/pe-format2
@@ -25,7 +25,7 @@ $(sbin_SCRIPTS) $(binfmt_DATA): config.status
 	chmod a-w $@.tmp
 	mv $@.tmp $@
 
-pe-format2-conf.sh: pe-format2-conf.sh.in
+pe-format2-setup: pe-format2-setup
 binfmt.d/pe-format2.conf: binfmt.d/pe-format2.conf.in
 
 install-exec-local:
