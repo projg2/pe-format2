@@ -1,14 +1,10 @@
 bin_PROGRAMS = pe-exec
 sbin_SCRIPTS = pe-format2-conf.sh
+binfmt_DATA = binfmt.d/pe-format2.conf
 
 if ENABLE_OPENRC
 noinst_SCRIPTS = openrc/pe-format.init
 noinst_DATA = openrc/pe-format.conf
-endif
-
-if ENABLE_BINFMT
-binfmtdir = $(prefix)/lib/binfmt.d
-binfmt_DATA = binfmt.d/pe-format2.conf
 endif
 
 DISTCLEANFILES = $(noinst_SCRIPTS) $(noinst_DATA) $(sbin_SCRIPTS) $(binfmt_DATA)

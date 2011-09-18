@@ -20,9 +20,7 @@ AC_ARG_ENABLE([openrc],
 	AS_HELP_STRING([--enable-openrc], [Build OpenRC files]))
 AM_CONDITIONAL([ENABLE_OPENRC], [test x"$enable_openrc" = x"yes"])
 
-AC_ARG_ENABLE([binfmt],
-	AS_HELP_STRING([--disable-binfmt], [Disable installing binfmt.d entry (for binfmt_misc)]))
-AM_CONDITIONAL([ENABLE_BINFMT], [test x"$enable_binfmt" != x"no"])
+SYSTEMD_MISC
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile])
