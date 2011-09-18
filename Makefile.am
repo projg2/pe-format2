@@ -15,6 +15,7 @@ pe_exec_SOURCES = \
 pe_exec_CPPFLAGS = -DSTATEFILE=\"$(pkgstatefile)\"
 
 $(sbin_SCRIPTS) $(binfmt_DATA): config.status
+	$(MKDIR_P) binfmt.d
 	rm -f $@ $@.tmp
 	$(SED) \
 		-e "s|@sysconfdir[@]|$(sysconfdir)|" \
