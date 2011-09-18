@@ -25,7 +25,7 @@ $(sbin_SCRIPTS) $(binfmt_DATA): config.status
 	chmod a-w $@.tmp
 	mv $@.tmp $@
 
-pe-format2-setup: pe-format2-setup
+pe-format2-setup: pe-format2-setup.in
 binfmt.d/pe-format2.conf: binfmt.d/pe-format2.conf.in
 
 install-exec-local:
