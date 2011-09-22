@@ -1,6 +1,7 @@
 #!/bin/sh
 # Regenerate the configuration for pe-exec.
 
+[ -n "${PATH}" ] && . "@sysconfdir@"/profile
 . "@sysconfdir@"/pe-format2.conf
 
 firstworking() {
