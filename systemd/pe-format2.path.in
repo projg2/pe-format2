@@ -1,0 +1,8 @@
+[Unit]
+Description=Re-compile pe-format2 configuration on file changes
+
+[Path]
+PathChanged=@sysconfdir@/pe-format2.conf
+
+[Install]
+WantedBy=multi-user.target

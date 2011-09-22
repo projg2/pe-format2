@@ -5,6 +5,9 @@
 #	pe-format2-setup
 # to update the binary configuration file used by pe-exec.
 
+# If you're using systemd, then you can enable automatic re-compilation typing:
+#	systemctl enable pe-format2.path
+
 # Each variable describes the application to use with a particular type
 # of binary:
 # - CLR is for .NET executables (e.g. mono, ilrun),

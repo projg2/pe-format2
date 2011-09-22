@@ -1,0 +1,6 @@
+[Unit]
+Description=Re-compile pe-format2 config
+
+[Service]
+Type=oneshot
+ExecStart=@sbindir@/pe-format2-setup

@@ -16,6 +16,7 @@ AS_IF([test "x$enable_debug" = "xyes"], [
 	AC_DEFINE([ENABLE_DEBUG], [1], [Enable debugging code])
 ])
 
+SYSTEMD_SYSTEM_UNITS
 SYSTEMD_MISC
 
 AC_CONFIG_HEADERS([config.h])
