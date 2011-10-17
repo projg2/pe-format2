@@ -13,6 +13,8 @@ EXTRA_DIST = pe-format2-setup.in \
 	binfmt.d/pe-format2.conf.in \
 	systemd/pe-format2.service.in \
 	systemd/pe-format2.path.in
+DISTCHECK_CONFIGURE_FLAGS = \
+	--with-systemdsystemunitdir=\$${libdir}/systemd/system
 
 pkgstatefile = $(localstatedir)/pe-format2
 
