@@ -2,6 +2,9 @@ bin_PROGRAMS = pe-exec
 sbin_SCRIPTS = pe-format2-setup
 binfmt_DATA = binfmt.d/pe-format2.conf
 sysconf_DATA = pe-format2.conf
+application_DATA = pe-exec.desktop
+
+applicationdir = $(datarootdir)/applications
 
 if WITH_SYSTEMD_SYSTEM_UNITS
 systemdsystemunit_DATA = systemd/pe-format2.service systemd/pe-format2.path
@@ -24,7 +27,7 @@ pe_exec_SOURCES = \
 	src/pe-config.c src/pe-config.h
 pe_exec_CPPFLAGS = -DSTATEFILE=\"$(pkgstatefile)\"
 
-$(sbin_SCRIPTS) $(binfmt_DATA) $(sysconf_DATA) $(systemdsystemunit_DATA): config.status
+$(sbin_SCRIPTS) $(binfmt_DATA) $(sysconf_DATA) $(systemdsystemunit_DATA) $(application_DATA): config.status
 	$(MKDIR_P) binfmt.d systemd
 	rm -f $@ $@.tmp
 	$(SED) \
@@ -39,6 +42,7 @@ $(sbin_SCRIPTS) $(binfmt_DATA) $(sysconf_DATA) $(systemdsystemunit_DATA): config
 pe-format2-setup: pe-format2-setup.in
 binfmt.d/pe-format2.conf: binfmt.d/pe-format2.conf.in
 pe-format2.conf: pe-format2.conf.in
+pe-exec.desktop: pe-exec.desktop.in
 systemd/pe-format2.service: systemd/pe-format2.service.in
 systemd/pe-format2.path: systemd/pe-format2.path.in
 

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=PE executable launcher
+Exec=@bindir@/pe-exec %f
+NoDisplay=true
+MimeType=application/x-ms-dos-executable;
