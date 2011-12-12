@@ -6,8 +6,13 @@ Makefile.in
 /build-aux
 /config.*
 /configure
+/stamp-h1
 
 *.o
 /pe-exec
-/pe-format.init
-/pe-format2-conf.sh
+/binfmt.d/pe-format2.conf
+/pe-exec.desktop
+/pe-format2-setup
+/pe-format2.conf
+/systemd/pe-format2.path
+/systemd/pe-format2.service
