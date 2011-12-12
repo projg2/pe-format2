@@ -10,12 +10,14 @@ if WITH_SYSTEMD_SYSTEM_UNITS
 systemdsystemunit_DATA = systemd/pe-format2.service systemd/pe-format2.path
 endif
 
-DISTCLEANFILES = $(sbin_SCRIPTS) $(binfmt_DATA) $(sysconf_DATA) $(systemdsystemunit_DATA)
+DISTCLEANFILES = $(sbin_SCRIPTS) $(binfmt_DATA) $(sysconf_DATA) \
+	$(systemdsystemunit_DATA) $(application_DATA)
 EXTRA_DIST = pe-format2-setup.in \
 	pe-format2.conf.in \
 	binfmt.d/pe-format2.conf.in \
 	systemd/pe-format2.service.in \
-	systemd/pe-format2.path.in
+	systemd/pe-format2.path.in \
+	pe-exec.desktop.in
 DISTCHECK_CONFIGURE_FLAGS = \
 	--with-systemdsystemunitdir=\$${libdir}/systemd/system
 
