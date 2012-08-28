@@ -7,6 +7,8 @@ Makefile.in
 /config.*
 /configure
 /stamp-h1
+.deps
+.dirstamp
 
 *.o
 /pe-exec
