@@ -26,6 +26,7 @@ if [ -z "${UNKNOWN}" -a -z "${MSDOS}" -a -z "${WIN32}" -a -z "${CLR}" -a -z "${W
 	echo 'None of the expected interpreters were set, aborting.' >&2
 	exit 1
 else
+	umask 022
 	printf '%s\0' "${UNKNOWN}" "${MSDOS}" "${WIN32}" "${CLR}" "${WIN64}" > @pkgstatefile@
 	exit ${?}
 fi
