@@ -1,10 +1,13 @@
 bin_PROGRAMS = pe-exec
 sbin_SCRIPTS = pe-format2-setup
-binfmt_DATA = binfmt.d/pe-format2.conf
 sysconf_DATA = pe-format2.conf
 application_DATA = pe-exec.desktop
 
 applicationdir = $(datarootdir)/applications
+
+#if WITH_BINFMT_D
+binfmt_DATA = binfmt.d/pe-format2.conf
+#endif
 
 if WITH_SYSTEMD_SYSTEM_UNITS
 systemdsystemunit_DATA = systemd/pe-format2.service systemd/pe-format2.path
